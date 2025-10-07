@@ -186,10 +186,10 @@ async def faq_callback(callback: CallbackQuery, state: FSMContext):
 @dp.message(F.text == "📞 Связаться с нами")
 async def contact_handler(message: Message, state: FSMContext):
     await state.clear()
-    text = ("<b>Контакты менеджера Сергея</b>\n\n"
-            "📞 Телефон: +7 (391) 555-0123\n"
+    text = ("<b>Контакты</b>\n\n"
+            "📞 Телефон: (391) 2-949-666\n"
             "💬 Telegram: @autoseller24\n"
-            "🟢 WhatsApp: +7 (391) 555-0123\n\n"
+            "🟢 WhatsApp: +7-(902)-924-96-66\n\n"
             "Вы можете звонить или писать в Telegram и WhatsApp по данному номеру.")
     await message.answer(text, parse_mode="HTML")
 
@@ -203,3 +203,4 @@ async def main():
 
 if __name__ == "__main__":
     asyncio.run(main())
+
