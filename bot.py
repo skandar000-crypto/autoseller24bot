@@ -9,7 +9,7 @@ from aiogram.fsm.state import StatesGroup, State
 API_TOKEN = '8364850506:AAFxKYwgrAfixORbkGlyfM_s0NhUVIQ59RU'
 
 # ID твоего канала, полученный командой /getchatid
-CHANNEL_ID = -100XXXXXXXXXX  
+CHANNEL_ID = -1001801476158  
 
 bot = Bot(token=API_TOKEN)
 dp = Dispatcher(storage=MemoryStorage())
@@ -210,3 +210,4 @@ async def main():
 
 if __name__ == "__main__":
     asyncio.run(main())
+
