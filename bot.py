@@ -7,7 +7,9 @@ from aiogram.fsm.storage.memory import MemoryStorage
 from aiogram.fsm.state import StatesGroup, State
 
 API_TOKEN = '8364850506:AAFxKYwgrAfixORbkGlyfM_s0NhUVIQ59RU'
-OWNER_CHAT_ID = 477634260
+
+# ID твоего канала, полученный командой /getchatid
+CHANNEL_ID = -100XXXXXXXXXX  
 
 bot = Bot(token=API_TOKEN)
 dp = Dispatcher(storage=MemoryStorage())
@@ -161,7 +163,7 @@ async def request_finish(message: Message, state: FSMContext):
     notify = (f"📥 <b>Новая заявка AutoSeller24</b>\n"
               f"Имя: {data['name']}\nТелефон: {data['phone']}\nКомментарий: {data['comment']}\n"
               f"Telegram: @{message.from_user.username if message.from_user.username else '-'}")
-    await bot.send_message(OWNER_CHAT_ID, notify, parse_mode="HTML")
+    await bot.send_message(CHANNEL_ID, notify, parse_mode="HTML")
     await message.answer("Спасибо! Ваша заявка принята. Наш менеджер свяжется с вами в ближайшее время.", reply_markup=main_menu)
     await state.clear()
 
@@ -198,9 +200,13 @@ async def about_handler(message: Message, state: FSMContext):
     await state.clear()
     await message.answer("AutoSeller24 — импорт автомобилей из Японии под заказ с 2022 года. Более 500 довольных клиентов.", reply_markup=main_menu)
 
+# Для удобства: команда получения chat_id текущего чата (канала)
+@dp.message(F.text == "/getchatid")
+async def get_chat_id(message: Message):
+    await message.answer(f"ID этого чата: {message.chat.id}")
+
 async def main():
     await dp.start_polling(bot)
 
 if __name__ == "__main__":
     asyncio.run(main())
-
